@@ -1,0 +1,29 @@
+<ion-header class="mb-3">
+  <ion-toolbar color="primary">
+    <ion-title class="header text-white">Expense List</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="expenseDetails[0]?.expenseList.length">
+    <ion-title>{{expenseDetails[0].month}}</ion-title>
+    <ion-card
+      *ngFor="let expense of expenseDetails[0]?.expenseList; let i = index"
+    >
+      <ion-list-header>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label> {{ expense.expenseName }} </ion-label>
+            </ion-col>
+            <ion-col>
+              <ion-label> Rs. {{ expense.amountSpent }} </ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list-header>
+    </ion-card>
+  </div>
+  <div class="mt-5" *ngIf="!expenseDetails[0]?.expenseList.length">
+    <ion-title>Nothing to catch Have a good Day</ion-title>
+  </div>
+</ion-content>

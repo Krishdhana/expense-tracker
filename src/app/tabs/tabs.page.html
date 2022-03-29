@@ -1,0 +1,16 @@
+<ion-tabs>
+  <ion-tab-bar *ngIf="!router.url.includes('welcome')" slot="bottom">
+    <ion-tab-button tab="home">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="expense-list">
+      <ion-icon name="list-outline"></ion-icon>
+      <ion-label>Expense List</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="setting">
+      <ion-icon name="settings-outline"></ion-icon>
+      <ion-label>Setting</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

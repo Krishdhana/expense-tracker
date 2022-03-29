@@ -1,0 +1,54 @@
+<ion-header class="mb-3">
+  <ion-toolbar color="primary">
+    <ion-title class="header text-white">Expense Tracker</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="card">
+    <p class="text-start">{{expenseDetails[0]?.month}}</p>
+    <div class="text-success">
+      <div class="card-hint">Savings</div>
+      <div
+        [ngClass]="{'text-danger' : expenseDetails[0]?.savings < 0}"
+        class="card-savings"
+      >
+        Rs. {{expenseDetails[0]?.savings}}
+      </div>
+    </div>
+    <div class="text-warning">
+      <div class="card-hint mt-2">Spent</div>
+      <div class="card-spent">Rs. {{expenseDetails[0]?.spent}}</div>
+    </div>
+  </ion-card>
+  <div *ngIf="expenseDetails[0]?.expenseList.length" class="p-2 text-center">
+    Newly added Expenses
+  </div>
+  <div *ngIf="!expenseDetails[0]?.expenseList.length" class="p-2 text-center">
+    Nothing to Catch up
+  </div>
+  <div *ngIf="expenseDetails[0]?.expenseList.length">
+    <ion-card
+      (click)="onSelectExpense(i)"
+      *ngFor="let expense of expenseDetails[0].expenseList; let i = index"
+    >
+      <ion-list-header>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label> {{ expense.expenseName }} </ion-label>
+            </ion-col>
+            <ion-col>
+              <ion-label> Rs. {{ expense.amountSpent }} </ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list-header>
+    </ion-card>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openAddExpenseModal()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

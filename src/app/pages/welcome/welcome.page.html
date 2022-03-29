@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="text-white">Welcome</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="p-5 text-center">
+    <ion-row class="fs-5 mt-3">
+      <ion-col>
+        Welcome to <br />
+        Expense Tracker
+      </ion-col></ion-row
+    >
+    <ion-row class="mt-2">
+      <ion-col> Please feed your basic details to continue </ion-col></ion-row
+    >
+    <form [formGroup]="welcomeForm" (ngSubmit)="onSubmit()">
+      <ion-row class="fs-5 mt-5">
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">What is your name</ion-label>
+            <ion-input
+              formControlName="name"
+              type="text"
+              autocorrect="on"
+              minlength="3"
+              clearInput
+            ></ion-input>
+          </ion-item> </ion-col
+      ></ion-row>
+      <ion-row class="fs-5 mt-3">
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating"
+              >What is your monthly income</ion-label
+            >
+            <ion-input
+              formControlName="income"
+              type="number"
+              minlength="4"
+              clearInput
+            ></ion-input>
+          </ion-item> </ion-col
+      ></ion-row>
+      <ion-button
+        [disabled]="!welcomeForm.valid"
+        class="mt-5"
+        type="submit"
+        color="primary"
+        fill="outline"
+      >
+        Next
+      </ion-button>
+    </form>
+  </ion-grid>
+</ion-content>
